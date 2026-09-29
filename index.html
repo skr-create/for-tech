@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FRAGLINE — реальные матчи CS2, турниры, прогнозы</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#12171d;--panel:#1c232c;--panel2:#242d38;--line:#2f3a47;--text:#e6ebf1;--mute:#8b98a8;--acc:#3d8bfd;--hot:#ff8a3d;--live:#ff4d5e;--ok:#3ecf8e}
+:root:not([data-theme="dark"]){}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef1f5;--panel:#fff;--panel2:#e6ebf1;--line:#d3dae3;--text:#18202a;--mute:#5d6b7c}}
+:root[data-theme="light"]{--bg:#eef1f5;--panel:#fff;--panel2:#e6ebf1;--line:#d3dae3;--text:#18202a;--mute:#5d6b7c}
+:root[data-theme="dark"]{--bg:#12171d;--panel:#1c232c;--panel2:#242d38;--line:#2f3a47;--text:#e6ebf1;--mute:#8b98a8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 "Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+header{background:var(--panel);border-bottom:2px solid var(--acc);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.bar{max-width:1180px;margin:auto;display:flex;align-items:center;gap:14px;padding:8px 14px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.5px}.logo b{color:var(--hot)}
+nav{display:flex;gap:2px;flex:1;overflow-x:auto}
+nav button{background:none;border:0;padding:8px 12px;border-radius:6px;color:var(--mute);font-weight:600;white-space:nowrap}
+nav button:hover{background:var(--panel2);color:var(--text)}nav button.on{color:var(--text);background:var(--panel2);box-shadow:inset 0 -2px var(--acc)}
+input,select{background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:6px;padding:7px 10px;font:inherit}
+.btn{background:var(--acc);border:0;color:#fff;padding:7px 14px;border-radius:6px;font-weight:600}
+.btn.ghost{background:var(--panel2);color:var(--text)}.btn.sm{padding:3px 10px;font-size:12px}.btn:hover{filter:brightness(1.12)}
+main{max-width:1180px;margin:auto;padding:14px;display:grid;grid-template-columns:1fr 300px;gap:14px}
+@media(max-width:860px){main{grid-template-columns:1fr}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:14px;overflow:hidden}
+.box>h2{margin:0;padding:10px 14px;font-size:14px;background:var(--panel2);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid var(--line);cursor:pointer}
+.row:hover{background:var(--panel2)}
+.tm{flex:1;display:flex;align-items:center;gap:8px;font-weight:600;min-width:0}.tm.r{justify-content:flex-end;text-align:right}
+.dot{width:22px;height:22px;border-radius:5px;display:inline-grid;place-items:center;font-size:10px;font-weight:800;color:#fff;flex:none}
+.sc{min-width:64px;text-align:center;font-weight:800;font-variant-numeric:tabular-nums}
+.meta{color:var(--mute);font-size:12px}
+.tag{font-size:11px;font-weight:700;padding:1px 7px;border-radius:10px;background:var(--panel2)}
+.tag.live{background:var(--live);color:#fff}.tag.up{color:var(--hot)}.tag.end{color:var(--mute)}
+.win{color:var(--ok)}.lose{color:var(--mute)}
+.hero{padding:18px;background:linear-gradient(120deg,var(--panel2),var(--panel));display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.hero h1{margin:0;font-size:24px}
+.tabs{display:flex;gap:6px;padding:10px 14px;flex-wrap:wrap;border-top:1px solid var(--line)}
+.tabs button{background:var(--panel2);border:1px solid transparent;border-radius:16px;padding:3px 12px}.tabs button.on{border-color:var(--acc);color:var(--acc)}
+table{width:100%;border-collapse:collapse}th,td{padding:8px 14px;text-align:left;border-top:1px solid var(--line)}th{color:var(--mute);font-size:12px}
+tr.h{cursor:pointer}tr.h:hover{background:var(--panel2)}.scroll{overflow-x:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;padding:12px}
+.card{background:var(--panel2);border-radius:8px;padding:12px;cursor:pointer;border:1px solid transparent}.card:hover{border-color:var(--acc)}
+.news{padding:10px 14px;border-top:1px solid var(--line);cursor:pointer}.news:hover{background:var(--panel2)}
+.bg{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:50;padding:14px}.bg.on{display:grid}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:10px;width:min(480px,100%);max-height:88vh;overflow:auto;padding:18px}
+.modal h3{margin:0 0 10px}.modal label{display:block;margin:10px 0 3px;color:var(--mute);font-size:12px}.modal input{width:100%}
+.bar2{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden;display:flex}.bar2 i{display:block;background:var(--acc)}.bar2 i+i{background:var(--hot)}
+.err{color:var(--live);font-size:13px;min-height:18px;margin-top:8px}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;padding:9px 18px;border-radius:8px;display:none;z-index:99}
+.empty{padding:20px;text-align:center;color:var(--mute)}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#home">FRAG<b>LINE</b></a>
+<nav id="nav"></nav>
+<input id="q" placeholder="Поиск команд, турниров…" style="width:180px" aria-label="Поиск">
+<button class="btn ghost sm" id="theme" title="Toggle theme">◐</button>
+<span id="auth"></span>
+</div></header>
+<main><section id="view"></section><aside id="side"></aside></main>
+<div class="bg" id="bg"><div class="modal" id="modal"></div></div>
+<div id="toast"></div>
+<script>
+// ---------- data (source: HLTV.org, 29 Sep 2026) ----------
+const H="https://www.hltv.org/";
+const E=[
+["epl",8244,"esl-pro-league-season-24","ESL Pro League Season 24","$1,000,000","Катовице, Польша","3–11 окт","up"],
+["stake",9256,"stake-ranked-episode-4","Stake Ranked Episode 4","$100,000","Барселона, Испания","1–4 окт","up"],
+["win",9361,"winline-mpkbk-cis-lan-season-8","WINLINE MPKBK CIS LAN Season 8","$40,000","Санкт-Петербург","29 сен–2 окт","live"],
+["frag",9432,"1xbet-frag-season-18","1xBet FRAG Season 18","$20,000","Ташкент, Узбекистан","29–30 сен","live"],
+["riga",9339,"urban-riga-open-season-7","Urban Riga Open Season 7","$5,500","Рига, Латвия","29–30 сен","live"],
+["cct",9420,"cct-2026-europe-series-10","CCT 2026 Europe Series 10","$25,000","Европа (онлайн)","28 сен–10 окт","live"],
+["cce",9433,"cct-2026-challengers-europe-series-7","CCT 2026 Challengers Europe Series 7","$5,000","Европа (онлайн)","26 сен–4 окт","live"],
+["ccs",9425,"cct-2026-south-america-series-6","CCT 2026 South America Series 6","$15,000","Южная Америка (онлайн)","22 сен–4 окт","live"],
+["xf",9410,"crossfire-season-6","CROSSFIRE Season 6","$10,000","Северная Америка (онлайн)","15 сен–11 окт","live"],
+["ep9",9362,"european-pro-league-series-9","European Pro League Series 9","$20,000","Европа (онлайн)","12–30 сен","live"],
+["eo",9353,"esl-challenger-league-season-52-oceania-cup-2","ECL S52 Oceania Cup 2","$2,500","Океания (онлайн)","22–29 сен","live"],
+["ea",9354,"esl-challenger-league-season-52-asia-pacific-cup-2","ECL S52 Asia-Pacific Cup 2","$10,000","Азия (онлайн)","22–29 сен","live"],
+["en",9356,"esl-challenger-league-season-52-north-america-cup-2","ECL S52 North America Cup 2","$17,500","Сев. Америка (онлайн)","22–29 сен","live"],
+["es",9355,"esl-challenger-league-season-52-south-america-cup-2","ECL S52 South America Cup 2","$17,500","Юж. Америка (онлайн)","22–29 сен","live"],
+["hot",9430,"hotspawn-showdown-2026-finals","Hotspawn Showdown 2026 Finals","$13,241","Шеффилд, Великобритания","24–25 окт","up"]
+].map(e=>({k:e[0],id:e[1],slug:e[2],name:e[3],prize:e[4],loc:e[5],dates:e[6],st:e[7],url:`${H}events/${e[1]}/${e[2]}`}));
+const EK=Object.fromEntries(E.map((e,i)=>[e.k,i]));
+// [hltvId, slugPrefix, teamA, teamB, event, date, time, bo, stage]  (teamA null = teams TBA)
+const R=[
+[2398325,"villainous-vs-lag","Villainous","LAG","xf","2026-09-29","LIVE",3,"Playoffs"],
+[2398771,"hotu-vs-black-phoenix","HOTU","Black Phoenix","win","2026-09-29","08:00",3],
+[2398758,"depo-vs-paqt","DEPO","PAQT","frag","2026-09-29","09:00",1],
+[2398759,"bushido-wildcats-vs-vision","Bushido Wildcats","VISION","frag","2026-09-29","09:00",1],
+[2398055,"bushido-wildcats-vs-nexus","Bushido Wildcats","Nexus","ep9","2026-09-29","10:00",3],
+[2398370,"lavked-vs-azuolas","Lavked","Azuolas","cct","2026-09-29","10:00",3],
+[2398643,"flyquest-vs-thunder-downunder","FlyQuest","THUNDER dOWNUNDER","eo","2026-09-29","11:00",3,"Гранд-финал"],
+[2398371,"masonic-vs-enjoy","MASONIC","Enjoy","cct","2026-09-29","13:00",3],
+[2398836,"maybe-vs-illyrians","MAYBE","Illyrians","cce","2026-09-29","13:00",3],
+[2398837,"privateer-vs-eternal-premium","Privateer","eternal premium","cce","2026-09-29","13:00",3],
+[2398808,"inner-circle-academy-vs-kuusamo","Inner Circle Academy","KUUSAMO","riga","2026-09-29","14:00",1],
+[2398489,"lynn-vision-vs-nexvoid","Lynn Vision","NEXVOID","ea","2026-09-29","15:00",3,"Гранд-финал"],
+[2398372,"ex-rustec-vs-nexus","ex-RUSTEC","Nexus","cct","2026-09-29","16:00",3],
+[2398777,"omega-vs-krytiepacani","Omega","krytiepacani","win","2026-09-29","17:00",3],
+[2398577,"borracheiros-vs-metanoia-wolves","BORRACHEIROS","METANOIA Wolves","ccs","2026-09-29","18:00",3],
+[2398815,"ence-vs-sangal","ENCE","Sangal","riga","2026-09-29","18:30",1],
+[2398373,"butterfly-vs-phantom-academy","Butterfly","Phantom Academy","cct","2026-09-29","19:00",3],
+[2398578,"grmio-vs-procyon","Grêmio","Procyon","ccs","2026-09-29","21:00",3],
+[2398519,"procyon-vs-turma-do-pagode","Procyon","Turma do Pagode","es","2026-09-29","23:00",3,"Гранд-финал"],
+[2398549,"lag-vs-marsborne","LAG","Marsborne","en","2026-09-30","03:00",3,"Гранд-финал"],
+[2398326,"iowa-stormboar-vs-without-a-roof","Iowa Stormboar","Without a Roof","xf","2026-09-30","02:00",3,"Playoffs"],
+[2398054,"leo-vs-mellren","Leo","mellren","ep9","2026-09-30","10:00",5,"Гранд-финал"],
+[2398770,"grand-final",null,null,"frag","2026-09-30","13:00",3,"Гранд-финал"],
+[2398825,"grand-final",null,null,"riga","2026-09-30","18:00",3,"Гранд-финал"],
+[2397938,"b8-vs-luminosity","B8","Luminosity","stake","2026-10-01","12:00",3],
+[2397939,"big-vs-fnatic","BIG","fnatic","stake","2026-10-01","14:30",3],
+[2397940,"astralis-vs-alliance","Astralis","Alliance","stake","2026-10-01","17:00",3],
+[2397941,"faze-vs-nemiga","FaZe","Nemiga","stake","2026-10-01","19:30",3],
+[2398307,"marsborne-vs-overtake-sector","Marsborne","Overtake Sector","xf","2026-10-02","02:00",3,"Playoffs"],
+[2398797,"grand-final",null,null,"win","2026-10-02","19:00",5,"Гранд-финал"],
+[2398717,"swiss-round-1-1",null,null,"epl","2026-10-03","11:00",3,"Swiss Round 1"],
+[2398718,"swiss-round-1-2",null,null,"epl","2026-10-03","11:00",3,"Swiss Round 1"],
+[2398719,"swiss-round-1-3",null,null,"epl","2026-10-03","13:30",3,"Swiss Round 1"],
+[2398009,"grand-final",null,null,"stake","2026-10-04","17:30",5,"Гранд-финал"],
+[2398597,"grand-final",null,null,"ccs","2026-10-04","23:00",3,"Гранд-финал"],
+[2398750,"quarter-final-1",null,null,"epl","2026-10-09","10:30",3,"Четвертьфинал"],
+[2398754,"semi-final-1",null,null,"epl","2026-10-10","15:45",3,"Полуфинал"],
+[2398413,"grand-final",null,null,"cct","2026-10-10","18:00",3,"Гранд-финал"],
+[2398757,"grand-final",null,null,"epl","2026-10-11","17:00",5,"Гранд-финал ESL Pro League"],
+[null,"",null,null,"hot","2026-10-24","TBA",3,"Матчи пока не объявлены"]
+].map((r,i)=>{const e=E[EK[r[4]]],live=r[6]=="LIVE",t0=new Date(r[5]+"T"+(live?"00:00":r[6]=="TBA"?"12:00":r[6])+":00+02:00");
+ return{i,id:r[0],a:r[2],b:r[3],ev:e,d:r[5],t:r[6],bo:r[7],stage:r[8]||"",live,t0,
+ url:r[0]?`${H}matches/${r[0]}/${r[2]?r[1]+"-"+e.slug:e.slug+"-"+r[1]+"-"+e.slug}`:null}});
+const done=m=>!m.live&&m.t!="TBA"&&Date.now()>m.t0.getTime()+3*36e5;
+const TN=[...new Set(R.flatMap(m=>[m.a,m.b]).filter(Boolean))].sort();
+// ---------- storage ----------
+const ls={g(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mem={};const get=(k,d)=>k in mem?mem[k]:(mem[k]=ls.g(k,d)),set=(k,v)=>{mem[k]=v;ls.s(k,v)};
+const me=()=>get("fl_me",null),$=s=>document.querySelector(s);
+const hue=n=>{let h=0;for(const c of n)h=(h*31+c.charCodeAt(0))%360;return h};
+const dot=n=>n?`<span class="dot" style="background:hsl(${hue(n)} 55% 45%)">${n.replace(/[^\p{L}\p{N} ]/gu,"").split(" ").map(w=>w[0]).join("").slice(0,3)}</span>`:`<span class="dot" style="background:var(--line)">?</span>`;
+const nm=n=>n||"Ждём команду";
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(t.x);t.x=setTimeout(()=>t.style.display="none",2200)}
+function open_(h){$("#modal").innerHTML=h;$("#bg").classList.add("on")}
+function close(){$("#bg").classList.remove("on")}
+$("#bg").onclick=e=>{if(e.target.id=="bg")close()};
+document.addEventListener("keydown",e=>{if(e.key=="Escape")close()});
+const link=(u,txt)=>u?`<a class="btn" href="${u}" target="_blank" rel="noopener noreferrer">${txt}</a>`:`<span class="tag up" style="padding:6px 12px">Coming soon</span>`;
+// ---------- auth ----------
+const enc=p=>btoa(unescape(encodeURIComponent(p)));
+function loginModal(mode="in"){
+ open_(`<h3>${mode=="in"?"Вход":"Регистрация"}</h3>
+ ${mode=="up"?'<label>Никнейм</label><input id="u" autocomplete="username">':''}
+ <label>Email</label><input id="em" type="email" autocomplete="email">
+ <label>Пароль</label><input id="pw" type="password" autocomplete="${mode=="in"?"current-password":"new-password"}">
+ <div class="err" id="err"></div>
+ <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="btn" id="go">${mode=="in"?"Войти":"Создать аккаунт"}</button>
+ <button class="btn ghost" id="sw">${mode=="in"?"Нет аккаунта? Регистрация":"Уже есть аккаунт? Войти"}</button></div>
+ <p class="meta">Аккаунт хранится только в этом браузере.</p>`);
+ $("#sw").onclick=()=>loginModal(mode=="in"?"up":"in");
+ $("#go").onclick=()=>{const em=$("#em").value.trim().toLowerCase(),pw=$("#pw").value,us=get("fl_users",{}),err=m=>$("#err").textContent=m;
+  if(!/^\S+@\S+\.\S+$/.test(em))return err("Введите корректный email.");
+  if(pw.length<6)return err("Пароль — минимум 6 символов.");
+  if(mode=="up"){const u=$("#u").value.trim();if(u.length<3)return err("Никнейм — минимум 3 символа.");
+   if(us[em])return err("Этот email уже зарегистрирован. Войдите.");us[em]={u,pw:enc(pw)};set("fl_users",us)}
+  else if(!us[em]||us[em].pw!==enc(pw))return err("Неверный email или пароль.");
+  set("fl_me",{em,u:us[em].u});close();toast("Привет, "+us[em].u+"!");draw()}}
+const needLogin=()=>{toast("Войдите, чтобы сделать это");loginModal("in")};
+function logout(){set("fl_me",null);toast("Вы вышли");draw()}
+// ---------- modals ----------
+const when=m=>m.live?"LIVE":m.t=="TBA"?"Дата уточняется":(m.d==new Date().toISOString().slice(0,10)?"Сегодня":m.d.slice(5).split("-").reverse().join(".")+" ")+" "+(m.t=="TBA"?"":m.t);
+function matchModal(i){
+ const m=R[i],vs=get("fl_votes",{}),tl=get("fl_tally",{}),my=vs[i],can=m.a&&m.b&&!done(m),v=tl[i]||[0,0],tot=v[0]+v[1];
+ open_(`<h3>${esc(nm(m.a))} vs ${esc(nm(m.b))}</h3><div class="meta">${esc(m.ev.name)} · Bo${m.bo} · ${esc(m.stage||"")}</div>
+ <p><b>${m.live?'<span class="tag live">LIVE</span>':when(m)}</b> <span class="meta">(время как на HLTV)</span></p>
+ ${done(m)?'<p class="meta">Матч, вероятно, уже сыгран — результат смотрите на HLTV.</p>':''}
+ <div style="margin:10px 0">${link(m.url,"Открыть матч на HLTV ↗")}</div>
+ ${can?`<b>Кто победит?</b>${my!=null?` <span class="meta">(ваш выбор: ${esc(my?m.b:m.a)})</span>`:""}
+ <div class="bar2" style="margin:8px 0"><i style="width:${tot?v[0]/tot*100:50}%"></i><i style="width:${tot?v[1]/tot*100:50}%"></i></div>
+ <div class="meta">${esc(m.a)} ${tot?Math.round(v[0]/tot*100):0}% · ${esc(m.b)} ${tot?Math.round(v[1]/tot*100):0}% · голосов: ${tot} (в этом браузере)</div>
+ <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn" data-p="0">${esc(m.a)}</button><button class="btn ghost" data-p="1">${esc(m.b)}</button></div>`
+ :'<p class="meta">Голосование откроется, когда определятся обе команды.</p>'}
+ <div style="margin-top:14px"><button class="btn ghost sm" onclick="close()">Закрыть</button></div>`);
+ document.querySelectorAll("[data-p]").forEach(x=>x.onclick=()=>{if(!me())return needLogin();
+  const p=+x.dataset.p,t=get("fl_tally",{}),s=get("fl_votes",{});if(s[i]!=null)return toast("Вы уже голосовали");
+  t[i]=t[i]||[0,0];t[i][p]++;s[i]=p;set("fl_tally",t);set("fl_votes",s);toast("Голос принят");matchModal(i)})}
+function teamModal(n){
+ const f=get("fl_fav",[]),on=f.includes(n),ms=R.filter(m=>m.a==n||m.b==n);
+ open_(`<h3>${dot(n)} ${esc(n)}</h3><div class="meta">Ближайшие матчи: ${ms.length}</div>
+ ${ms.map(m=>`<div class="row" onclick="matchModal(${m.i})"><span class="tm">${esc(m.a)} vs ${esc(m.b)}</span><span class="meta">${when(m)}</span></div>`).join("")||'<div class="empty">Матчей пока нет.</div>'}
+ <div style="display:flex;gap:8px;margin-top:14px"><button class="btn" id="fv">${on?"★ Вы подписаны":"☆ Следить"}</button><button class="btn ghost" onclick="close()">Закрыть</button></div>`);
+ $("#fv").onclick=()=>{if(!me())return needLogin();const f=get("fl_fav",[]);set("fl_fav",on?f.filter(x=>x!=n):[...f,n]);toast(on?"Отписались":"Следите за "+n);teamModal(n);draw()}}
+function eventModal(k){
+ const e=E[EK[k]],ms=R.filter(m=>m.ev==e);
+ open_(`<h3>${esc(e.name)}</h3><div class="meta">${e.loc} · ${e.dates} · призовой фонд ${e.prize}</div>
+ <div style="margin:10px 0">${link(e.url,"Страница турнира на HLTV ↗")}</div><b>Матчи</b>
+ ${ms.map(m=>`<div class="row" onclick="matchModal(${m.i})"><span class="tm">${esc(nm(m.a))} vs ${esc(nm(m.b))}</span><span class="meta">${when(m)}</span></div>`).join("")||'<div class="empty">Coming soon</div>'}
+ <div style="margin-top:14px"><button class="btn ghost" onclick="close()">Закрыть</button></div>`)}
+// ---------- views ----------
+const mrow=m=>`<div class="row" onclick="matchModal(${m.i})"><span class="tm r">${esc(nm(m.a))}${dot(m.a)}</span>
+ <span class="sc">${m.live?'<span class="tag live">LIVE</span>':m.t=="TBA"?'<span class="tag up">TBA</span>':`<span class="tag ${done(m)?"end":"up"}">${m.t}</span>`}<br><span class="meta">${m.d.slice(5).split("-").reverse().join(".")}</span></span>
+ <span class="tm">${dot(m.b)}${esc(nm(m.b))}</span><span class="meta" style="min-width:150px;text-align:right">${esc(m.ev.name.replace("ESL Challenger League","ECL"))}<br>${m.url?`<a href="${m.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" style="color:var(--acc)">HLTV ↗</a>`:'<b class="win">Coming soon</b>'}</span></div>`;
+const erow=e=>`<div class="row" onclick="eventModal('${e.k}')"><span class="tm">${esc(e.name)}</span><span class="meta">${e.dates}</span><span class="meta">${e.prize}</span><span class="tag ${e.st}">${e.st=="live"?"LIVE":"Скоро"}</span></div>`;
+let filt={m:"all",e:"all",t:"all",ev:"all"};
+const tabs=(k,o)=>`<div class="tabs">${o.map(x=>`<button class="${filt[k]==x[0]?"on":""}" onclick="filt['${k}']='${x[0]}';draw()">${x[1]}</button>`).join("")}</div>`;
+const today=()=>new Date().toISOString().slice(0,10);
+const V={
+home(){const live=R.filter(m=>m.live),up=R.filter(m=>!m.live&&!done(m)&&m.a&&m.b).slice(0,6);
+ return `<div class="box"><div class="hero"><div><h1>Реальные матчи CS2 — в одном месте</h1><div class="meta">Расписание на ${R.length-1} ближайших матчей и ${E.length} турниров. Данные: HLTV.org, 29.09.2026.</div></div><button class="btn" onclick="go('matches')">Все матчи</button></div></div>
+ ${live.length?`<div class="box"><h2>Сейчас идут</h2>${live.map(mrow).join("")}</div>`:""}
+ <div class="box"><h2>Ближайшие матчи <button class="btn ghost sm" onclick="go('matches')">Все</button></h2>${up.map(mrow).join("")}</div>
+ <div class="box"><h2>Главное событие</h2>${erow(E[0])}<div class="row" style="cursor:default"><span class="meta">Первые матчи ESL Pro League S24 — 3 октября, финал — 11 октября.</span></div></div>`},
+matches(){const t=today(),l=R.filter(m=>(filt.m=="all"||(filt.m=="live"&&m.live)||(filt.m=="today"&&m.d==t)||(filt.m=="soon"&&m.d>t))&&(filt.ev=="all"||m.ev.k==filt.ev));
+ return `<div class="box"><h2>Матчи <select onchange="filt.ev=this.value;draw()" aria-label="Турнир"><option value="all">Все турниры</option>${E.map(e=>`<option value="${e.k}" ${filt.ev==e.k?"selected":""}>${esc(e.name)}</option>`).join("")}</select></h2>
+ ${tabs("m",[["all","Все"],["live","Live"],["today","Сегодня"],["soon","Скоро"]])}${l.map(mrow).join("")||'<div class="empty">Нет матчей по этому фильтру.</div>'}</div>`},
+events(){const l=E.filter(e=>filt.e=="all"||e.st==filt.e);
+ return `<div class="box"><h2>Турниры</h2>${tabs("e",[["all","Все"],["live","Идут"],["up","Скоро"]])}${l.map(erow).join("")}</div>`},
+teams(){const f=get("fl_fav",[]),l=TN.filter(n=>filt.t=="all"||f.includes(n));
+ return `<div class="box"><h2>Команды</h2>${tabs("t",[["all","Все"],["fav","★ Мои"]])}<div class="grid">${l.map(n=>`<div class="card" data-t="${esc(n)}">${dot(n)} <b>${esc(n)}</b> ${f.includes(n)?"★":""}<div class="meta">матчей: ${R.filter(m=>m.a==n||m.b==n).length}</div></div>`).join("")||'<div class="empty">Подпишитесь на команду, чтобы увидеть её здесь.</div>'}</div></div>`},
+profile(){const u=me();if(!u)return `<div class="box"><div class="empty">Войдите, чтобы увидеть профиль.<br><br><button class="btn" onclick="loginModal()">Войти</button></div></div>`;
+ const f=get("fl_fav",[]),v=get("fl_votes",{});
+ return `<div class="box"><h2>${esc(u.u)}</h2><div class="row" style="cursor:default">${esc(u.em)}</div>
+ <div class="row" style="cursor:default"><b>Мои команды:</b> ${f.map(n=>`<a class="tag" href="#" data-t="${esc(n)}">${esc(n)}</a>`).join(" ")||"пока нет"}</div>
+ <div class="row" style="cursor:default"><b>Мои прогнозы:</b> ${Object.keys(v).map(k=>`<a class="tag" href="#" onclick="matchModal(${k});return false">${esc(v[k]?R[k].b:R[k].a)}</a>`).join(" ")||"пока нет"}</div>
+ <div class="row" style="cursor:default"><button class="btn ghost" onclick="logout()">Выйти</button></div></div>`},
+search(q){const t=TN.filter(x=>x.toLowerCase().includes(q)),e=E.filter(x=>x.name.toLowerCase().includes(q));
+ return `<div class="box"><h2>Результаты: «${esc(q)}»</h2>${t.map(x=>`<div class="row" data-t="${esc(x)}">${dot(x)} ${esc(x)}</div>`).join("")}${e.map(erow).join("")}${t.length+e.length?"":'<div class="empty">Ничего не найдено. Введите название команды или турнира.</div>'}</div>`}};
+const side=()=>`<div class="box"><h2>Идут сейчас</h2>${E.filter(e=>e.st=="live").slice(0,6).map(erow).join("")}</div>
+ <div class="box"><h2>Скоро</h2>${E.filter(e=>e.st=="up").map(erow).join("")}</div>
+ <div class="box"><h2>Полезное</h2><div class="row" style="cursor:default"><a href="${H}matches" target="_blank" rel="noopener noreferrer" style="color:var(--acc)">Все матчи на HLTV ↗</a></div><div class="row" style="cursor:default"><a href="${H}ranking/teams" target="_blank" rel="noopener noreferrer" style="color:var(--acc)">Рейтинг команд ↗</a></div><div class="row" style="cursor:default"><a href="${H}results" target="_blank" rel="noopener noreferrer" style="color:var(--acc)">Результаты ↗</a></div></div>`;
+// ---------- app ----------
+const PAGES=[["home","Главная"],["matches","Матчи"],["events","Турниры"],["teams","Команды"]];
+const go=p=>{location.hash=p};
+function draw(){
+ const p=location.hash.slice(1)||"home",q=$("#q").value.trim().toLowerCase(),u=me();
+ $("#nav").innerHTML=PAGES.map(x=>`<button class="${x[0]==p&&!q?"on":""}" onclick="$('#q').value='';go('${x[0]}')">${x[1]}</button>`).join("");
+ $("#auth").innerHTML=u?`<button class="btn ghost sm" onclick="go('profile')">👤 ${esc(u.u)}</button>`:`<button class="btn sm" onclick="loginModal('in')">Войти</button> <button class="btn ghost sm" onclick="loginModal('up')">Регистрация</button>`;
+ $("#view").innerHTML=q?V.search(q):(V[p]||V.home)();$("#side").innerHTML=side();
+ document.querySelectorAll("[data-t]").forEach(x=>x.onclick=e=>{e.preventDefault();teamModal(x.dataset.t)})}
+$("#q").oninput=draw;
+$("#theme").onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme=="dark":!matchMedia("(prefers-color-scheme:light)").matches;r.dataset.theme=d?"light":"dark"};
+window.onhashchange=()=>{$("#q").value="";draw();scrollTo(0,0)};
+draw();
+</script>
+</body>
+</html>
+ 
