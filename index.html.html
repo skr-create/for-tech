@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FRAGLINE — реальные матчи CS2, турниры, прогнозы</title>
+<title>FRAGOLINO — реальные матчи CS2, турниры, прогнозы</title>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#12171d;--panel:#1c232c;--panel2:#242d38;--line:#2f3a47;--text:#e6ebf1;--mute:#8b98a8;--acc:#3d8bfd;--hot:#ff8a3d;--live:#ff4d5e;--ok:#3ecf8e}
+--bg:rgb(0, 0, 0);--panel:#000000;--panel2:#290777;--line:#5f0404;--text:#ff0000;--mute:#3b1fa0;--acc:#ff0000;--hot:#ae00ff;--live:#ff0000;--ok:#3ecf8e}
 :root:not([data-theme="dark"]){}
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef1f5;--panel:#fff;--panel2:#e6ebf1;--line:#d3dae3;--text:#18202a;--mute:#5d6b7c}}
 :root[data-theme="light"]{--bg:#eef1f5;--panel:#fff;--panel2:#e6ebf1;--line:#d3dae3;--text:#18202a;--mute:#5d6b7c}
@@ -59,7 +59,7 @@ tr.h{cursor:pointer}tr.h:hover{background:var(--panel2)}.scroll{overflow-x:auto}
 </head>
 <body>
 <header><div class="bar">
-<a class="logo" href="#home">FRAG<b>LINE</b></a>
+<a class="logo" href="#home">FRAGO<b>LINO</b></a>
 <nav id="nav"></nav>
 <input id="q" placeholder="Поиск команд, турниров…" style="width:180px" aria-label="Поиск">
 <button class="btn ghost sm" id="theme" title="Toggle theme">◐</button>
@@ -215,7 +215,7 @@ const tabs=(k,o)=>`<div class="tabs">${o.map(x=>`<button class="${filt[k]==x[0]?
 const today=()=>new Date().toISOString().slice(0,10);
 const V={
 home(){const live=R.filter(m=>m.live),up=R.filter(m=>!m.live&&!done(m)&&m.a&&m.b).slice(0,6);
- return `<div class="box"><div class="hero"><div><h1>Реальные матчи CS2 — в одном месте</h1><div class="sub-status">я на уроке</div><div class="meta" style="margin-top:6px">Расписание на ${R.length-1} ближайших матчей и ${E.length} турниров. Данные: HLTV.org, 29.09.2026.</div></div><button class="btn" onclick="go('matches')">Все матчи</button></div></div>
+ return `<div class="box"><div class="hero"><div><h1>Реальные матчи CS2 — в одном месте</h1><div class="sub-status">я на уроке</div><div class="meta" style="margin-top:6px">Расписание на ${R.length-1} ближайших матчей и ${E.length} турниров. Данные: HLTV.org, 29.09.2026.</div></div><button class="btn" onclick="go('matches')">Все арбузики</button></div></div>
  ${live.length?`<div class="box"><h2>Сейчас идут</h2>${live.map(mrow).join("")}</div>`:""}
  <div class="box"><h2>Ближайшие матчи <button class="btn ghost sm" onclick="go('matches')">Все</button></h2>${up.map(mrow).join("")}</div>
  <div class="box"><h2>Главное событие</h2>${erow(E[0])}<div class="row" style="cursor:default"><span class="meta">Первые матчи ESL Pro League S24 — 3 октября, финал — 11 октября.</span></div></div>`},
